@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Ծննդյան Հրավիրատոմս</title>
+
+  <!-- Instant preload for key 1080p frames -->
+  <link rel="preload" as="image" href="assets/frames/frame_0001.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/frames/frame_0048.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/video/video_poster.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="IMG_6280.JPEG" />
+  <link rel="preload" as="image" href="IMG_6312.JPEG?v=2" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+
+  <!-- Preloader Screen -->
+  <div id="preloader" class="preloader">
+    <div class="loader-content">
+      <div class="luxury-badge">✦ INVITATION ✦</div>
+      <h2 class="loader-title">ՀՐԱՎԻՐԱՏՈՄՍ</h2>
+      <div class="progress-bar-wrap">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <div id="progress-text" class="progress-text">0%</div>
+      <p class="loader-subtitle">Պատրաստվում է անհատական հրավերը...</p>
+    </div>
+  </div>
+
+  <!-- Main 9:16 Mobile Column Wrapper -->
+  <main class="mobile-column">
+
+    <!-- Part 1: Auto-Opening Envelope + Fullscreen Video Section -->
+    <section class="hero-video-section" id="hero-section">
+      <div class="canvas-wrapper">
+
+        <!-- Full-Screen Revealed Video (underneath the opening envelope doors) -->
+        <div class="fullscreen-video-layer" id="section-details">
+          <video
+            id="inner-video"
+            class="fullscreen-video"
+            src="assets/video/inner_video_1080p.mp4"
+            poster="assets/video/video_poster.jpg"
+            autoplay
+            muted
+            playsinline
+            webkit-playsinline
+            preload="auto"
+          >
+            <source src="assets/video/inner_video_1080p.mp4" type="video/mp4">
+            <source src="IMG_6273.MP4" type="video/mp4">
+            Ձեր բրաուզերը չի աջակցում վիդեոն:
+          </video>
+        </div>
+
+        <!-- Envelope Canvas (on top, doors open automatically to reveal video) -->
+        <canvas id="animation-canvas"></canvas>
+
+      </div>
+    </section>
+
+    <!-- Part 2: Subsequent Invitation Images (auto-scrolled after video) -->
+    <section class="invitation-pages" id="invitation-pages">
+      <div class="invitation-slide" id="slide-1">
+        <img src="IMG_6280.JPEG" alt="Հրավիրատոմս - Մաս 1" class="invitation-img" decoding="async" />
+      </div>
+
+      <div class="invitation-slide map-slide" id="slide-2">
+        <img src="IMG_6312.JPEG?v=2" alt="Հրավիրատոմս - Մաս 2" class="invitation-img" decoding="async" />
+
+        <!-- Animated Dashed Route Path from Location Pin to "Ինչպես հասնել" -->
+        <svg class="route-svg" viewBox="0 0 1200 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M 116 1092 C 116 1225, 220 1268, 352 1268"
+            stroke="rgba(43, 53, 39, 0.18)"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <path
+            id="route-path"
+            class="route-dashed-line"
+            d="M 116 1092 C 116 1225, 220 1268, 352 1268"
+            stroke="#2b3527"
+            stroke-width="4.5"
+            stroke-dasharray="14 12"
+            stroke-linecap="round"
+          />
+          <path
+            d="M 338 1254 L 360 1268 L 338 1282"
+            stroke="#2b3527"
+            stroke-width="4.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="116" cy="1092" r="7" fill="#2b3527" />
+          <circle r="7.5" fill="#2b3527">
+            <animateMotion
+              dur="2.2s"
+              repeatCount="indefinite"
+              path="M 116 1092 C 116 1225, 220 1268, 352 1268"
+              keyPoints="0;1"
+              keyTimes="0;1"
+              calcMode="spline"
+              keySplines="0.4 0 0.2 1"
+            />
+          </circle>
+        </svg>
+
+        <a
+          href="https://yandex.com/maps/org/imperiya/178147001067/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="map-hotspot"
+          aria-label="Ինչպես հասնել (Yandex Maps)"
+        >
+          <span class="map-pulse-ring"></span>
+          <span class="map-tap-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M8 13V4.5C8 3.67157 8.67157 3 9.5 3C10.3284 3 11 3.67157 11 4.5V11M11 11V9.5C11 8.67157 11.6716 8 12.5 8C13.3284 8 14 8.67157 14 9.5V11M11 11H14M14 11V10.5C14 9.67157 14.6716 9 15.5 9C16.3284 9 17 9.67157 17 10.5V12M17 12C17 11.1716 17.6716 10.5 18.5 10.5C19.3284 10.5 20 11.1716 20 12V16C20 19.3137 17.3137 22 14 22H11.5C9.567 22 7.817 21.216 6.55 19.95L4.12 17.52C3.53 16.93 3.53 15.98 4.12 15.39C4.71 14.8 5.66 14.8 6.25 15.39L8 17.14V13Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
